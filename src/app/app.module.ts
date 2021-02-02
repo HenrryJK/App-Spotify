@@ -6,6 +6,7 @@ import { HomeComponent } from './componente/home/home.component';
 import { SearchComponent } from './componente/search/search.component';
 import { ArtistComponent } from './componente/artist/artist.component';
 import { NavbarComponent } from './componente/shared/navbar/navbar.component';
+import {HttpClientModule } from '@angular/common/http';
 // importando las rutas
 import {ROUTES} from './app.routes';
 
@@ -19,7 +20,8 @@ import {ROUTES} from './app.routes';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES , {useHash: true})
+    RouterModule.forRoot(ROUTES , {useHash: true}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
