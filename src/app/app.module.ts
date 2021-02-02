@@ -1,16 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './componente/home/home.component';
+import { SearchComponent } from './componente/search/search.component';
+import { ArtistComponent } from './componente/artist/artist.component';
+import { NavbarComponent } from './componente/shared/navbar/navbar.component';
+// importando las rutas
+import {ROUTES} from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    SearchComponent,
+    ArtistComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(ROUTES , {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
