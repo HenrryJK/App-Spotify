@@ -38,7 +38,7 @@ export class SpotifyService {
       'Authorization' : 'Bearer BQBT0t1oy4cqEUiWVjRWOcBG6FcwNAfRqa8y5QkZK3Rcmn9HAhrmO_oi8Q_Gan0WhBoGekyvmkSiPG-olEw'
   });*/
 
- return   this.getQuery(`search?q=${termino}&type=artist&limit=10`)
+ return   this.getQuery(`search?q=${termino}&type=artist&limit=30`)
  .pipe( map ( data => {
     return data['artists'].items;
   }));
