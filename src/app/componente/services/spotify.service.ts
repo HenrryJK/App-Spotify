@@ -47,4 +47,14 @@ export class SpotifyService {
      }));*/
      }
 
+
+     getTopTrack (id:string){
+       // la razon por la que usa getGuery es para poder centralizar todas las peticiones que se haga es como si fuera un global que tiene todas las
+       //peticiones al mismo servicio
+      return   this.getQuery(`artists/${id}/top-tracks?market=us`)
+      .pipe( map ( data => {
+        return data['tracks'];
+      }));
+       }
+
 }
