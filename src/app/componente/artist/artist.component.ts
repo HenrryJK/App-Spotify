@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { subscribeOn } from 'rxjs/operators';
 import { SpotifyService } from '../services/spotify.service';
+import { TokenaccessService } from '../services/tokenaccess.service';
+import { Token } from '../models/token';
+import { url } from 'inspector';
+
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -11,7 +16,8 @@ export class ArtistComponent {
 artista: any = {};
 topTracks: any[] = [];
 loadingArtist : boolean;
-  constructor(private router : ActivatedRoute , private spotify: SpotifyService) {
+tokens:Token;
+  constructor(private router : ActivatedRoute , private spotify: SpotifyService , private token:TokenaccessService) {
 
     this.loadingArtist= true;
     this.router.params.subscribe(params =>{
@@ -19,8 +25,18 @@ loadingArtist : boolean;
       this.getArtist(params['id']);
       this.getTopTracks(params['id']);
     });
+
+   this.tokens = new Token();
+
    }
 
+  getToken (url:string) {
+      this.token.accesoToken(this.tokens).subscribe(response => {
+        console.log(response);
+      });
+//  lo estoy llamando
+      console.log('Mandando token !');
+  }
    getArtist(id:string) {
     this.loadingArtist= true;
 
